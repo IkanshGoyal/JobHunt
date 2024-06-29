@@ -8,7 +8,7 @@ const postSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now },
     title: { type: String, required: true },
     description: { type: String, required: true },
-    links: [String],
+    link: { type: String, required: true },
     likes: [{
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'Applicant' },
     }],

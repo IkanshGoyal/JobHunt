@@ -1,0 +1,122 @@
+:root {
+    --background-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --primary-color: #25CEDE;
+    --secondary-color: #03dac6;
+    --neu-shadow-light: rgba(255, 255, 255, 0.1);
+    --neu-shadow-dark: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] {
+    --background-color: #f0f0f3;
+    --text-color: #333;
+    --primary-color: #25CEDE;
+    --secondary-color: #03dac6;
+    --neu-shadow-light: #fff;
+    --neu-shadow-dark: rgba(174, 174, 192, 0.4);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow-x: auto;
+    height: fit-content;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background-color);
+}
+
+.posts-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.posts-container::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+.posts-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: 3px solid var(--background-color);
+}
+
+.post-container {
+    background: var(--background-color);
+    width: 500px;
+    height: fit-content;
+    max-height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px var(--neu-shadow-dark), -5px -5px 15px var(--neu-shadow-light);
+    transition: all 0.3s ease;
+}
+
+.post-container:hover {
+    transform: translateY(-5px);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.name {
+    font-size: 1em;
+    margin: 0;
+}
+
+.date {
+    font-size: 0.8em;
+    color: gray;
+    margin-left: auto;
+}
+
+.title {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 10px 0;
+    padding: 10px 0px;
+}
+
+.link {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    background: var(--background-color);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px var(--neu-shadow-dark), -5px -5px 15px var(--neu-shadow-light);
+}
+
+.description {
+    margin: 10px 0;
+    text-align: left;
+}
+
+.like, .comment {
+    font-size: 0.9em;
+    color: gray;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.like:hover, .comment:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+}

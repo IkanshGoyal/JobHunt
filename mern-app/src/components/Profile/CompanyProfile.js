@@ -19,7 +19,7 @@ const CompanyProfile = () => {
             name: name.value,
             email,
             website: website.value,
-            logo: logo.files[0], 
+            logo: logo.value, 
             location: location.value,
             industry: industry.value,
             size: size.value,
@@ -27,8 +27,10 @@ const CompanyProfile = () => {
         };
 
         try {
-            await axios.post('http://localhost:8080/api/companies', newCompany);
-            alert("Profile submitted successfully");
+            console.log(newCompany);
+            await axios.post('http://localhost:8080/api/company', newCompany);
+            alert("Profile Created!");
+            window.location.href = '/company/home';
         } catch (error) {
             alert("Error submitting the form: " + error.message);
         }
@@ -59,7 +61,7 @@ const CompanyProfile = () => {
                     <span className="icon">
                         <FontAwesomeIcon icon={faBuilding} />
                     </span>
-                    <input type="file" name="logo" placeholder="Upload image" />
+                    <input type="text" name="logo" placeholder="Enter image url" />
                 </div>
                 <div className="field">
                     <span className="icon">

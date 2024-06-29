@@ -10,6 +10,9 @@ import ApplicantRegister from './components/Register/ApplicantRegister';
 import CompanyProfile from './components/Profile/CompanyProfile';
 import RecruitProfile from './components/Profile/RecruiterProfile';
 import ApplicantProfile from './components/Profile/ApplicantProfile';
+import CP from './components/MainProfile/CP';
+import RP from './components/MainProfile/RP';
+import AP from './components/MainProfile/AP';
 import ResetPassword from './components/ResetPassword';
 import Header from './components/Header/Header';
 import Hero from "./components/UI/Hero";
@@ -69,6 +72,9 @@ const App = () => {
           <Route path="/company/login" element={<CompanyLogin />} />
           <Route path="/company/register" element={<CompanyRegister />} />
           <Route path="/company/completeprofile" element={<CompanyProfile />} />
+          <Route path="/company/profile" element={<CP />} />
+          <Route path="/applicant/profile" element={<AP />} />
+          <Route path="/recruiter/profile" element={<RP />} />
           <Route path="/recruiter/login" element={<RecruiterLogin />} />
           <Route path="/recruiter/register" element={<RecruiterRegister />} />
           <Route path="/recruiter/completeprofile" element={<RecruitProfile />} />

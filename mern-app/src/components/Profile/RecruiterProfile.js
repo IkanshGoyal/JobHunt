@@ -30,8 +30,9 @@ const RecruiterProfile = () => {
         };
 
         try {
-            await axios.post('http://localhost:8080/api/recruiters', newRecruiter);
-            alert("Profile submitted successfully");
+            await axios.post('http://localhost:8080/api/recruiter', newRecruiter);
+            alert("Profile Created!");
+            window.location.href = '/recruiter/home';
         } catch (error) {
             alert("Error submitting the form: " + error.message);
         }

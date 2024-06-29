@@ -9,7 +9,7 @@ const RecruiterLogin = () => {
     const { email, password } = event.target.elements;
     try {
       await signInWithEmailAndPassword(auth, email.value, password.value);
-      console.log('Recruiter login successful');
+      window.location.href = '/recruiter/home';
     } catch (error) {
       alert('Error logging in', error);
     }
