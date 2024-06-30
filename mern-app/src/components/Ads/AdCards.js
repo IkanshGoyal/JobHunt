@@ -26,6 +26,10 @@ const Ads = () => {
         return <div>Loading...</div>;
     }
 
+    if (ads.length === 0) {
+        return <div>No ads available.</div>;
+    }
+
     return (
         <div className='ads-container'>
             {ads.map((ad) => (
