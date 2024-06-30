@@ -16,19 +16,25 @@ const AP = () => {
             if (user) {
                 try {
                     const response = await axios.get(`http://localhost:8080/api/applicant/profile/${user.uid}`);
-                    setProfile(response.data);
+                    setProfile(response.data || null);
                 } catch (error) {
                     console.error('Error fetching profile:', error);
                 }
             }
         };
 
-        fetchProfile();
-    }, [user]);
+        if (!loading) {
+            fetchProfile();
+        }
+    }, [user, loading]);
 
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
         document.documentElement.setAttribute('data-theme', darkMode ? 'light' : 'dark');
+    };
+
+    const handleEditProfile = () => {
+        window.location.href = '/applicant/completeprofile'; 
     };
 
     if (loading) {
@@ -45,10 +51,18 @@ const AP = () => {
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
             </button>
             <div className="profile-header">
-                <img src={profile.profilePicture || "https://via.placeholder.com/150"} alt="profile" />
+                <img src={profile.profilePicture || 'https://via.placeholder.com/150'} alt="profile" />
                 <h2>{profile.fullName}</h2>
-                <button className="follow-button">Follow</button>
+                <button className="edit-button" onClick={handleEditProfile}>Edit Details</button>
                 <button className="share-button"><FontAwesomeIcon icon={faShareAlt} /> Share</button>
+            </div>
+            <div className="followers-following">
+                <button className="followers-button">
+                    <FontAwesomeIcon icon={faUserFriends} /> Followers
+                </button>
+                <button className="following-button">
+                    <FontAwesomeIcon icon={faUserFriends} /> Following
+                </button>
             </div>
             <div className="profile-details">
                 <div className="detail-item">
@@ -69,11 +83,11 @@ const AP = () => {
                 </div>
                 <div className="detail-item">
                     <FontAwesomeIcon icon={faTools} />
-                    <span>{profile.skills.join(', ')}</span>
+                    <span>{profile.skills ? profile.skills.join(', ') : 'No skills specified'}</span>
                 </div>
                 <div className="detail-item">
                     <FontAwesomeIcon icon={faLink} />
-                    <span>{profile.linkedInProfile}</span>
+                    <span>{profile.linkedInProfile || 'No LinkedIn profile specified'}</span>
                 </div>
                 <div className="detail-item">
                     <FontAwesomeIcon icon={faBullseye} />

@@ -1,7 +1,7 @@
 import React from 'react';
-import { auth } from '../firebase';
+import { auth } from '../../firebase';
 import { sendPasswordResetEmail } from 'firebase/auth';
-import './Common/form.css';
+import './form.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 

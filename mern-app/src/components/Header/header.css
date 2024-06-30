@@ -1,64 +1,92 @@
-.header {
+.dark-theme {
+	--bg: #2C2F33;
+	--button: #25CEDE;
+	--primary-text: #EEEEEE;
+	--secondary-text: #687890;
+	--lightShadow: #3B4451 -5px -5px 15px;
+	--darkShadow: #000000 5px 5px 15px;
+}
+
+.light-theme {
+	--bg: #FFFFFF;
+	--button: #EEEEEE;
+	--primary-text: #687890;
+	--secondary-text: #687890;
+	--lightShadow: #FFFFFF -5px -5px 15px;
+	--darkShadow: #88A0B7 5px 5px 15px;
+}
+
+.headerMain {
     width: 100%;
-    height: 80px;
-    line-height: 80px;
-    background: var(--body-bg);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: var(--bg);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
 .nav_wrapper {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: space-between;
-}
-
-.logo h1 {
-    color: var(--primary-color);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-.menu {
-    display: flex;
     align-items: center;
-    column-gap: 2.7rem;
-    list-style: none;
-}
-
-.menu__link {
-    font-weight: 400;
-    font-size: 1.2rem;
-    color: var(--link-color);
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.menu__link:hover {
-    color: var(--link-active);
-}
-
-.light__mode {
-    cursor: pointer;
-}
-
-.light__mode span {
-    display: flex;
-    align-items: center;
-    column-gap: 0.4rem;
-    font-size: 1rem;
-    color: var(--link-color);
-    transition: color 0.3s ease;
-}
-
-.header__shrink {
     width: 100%;
-    height: 80px;
-    line-height: 80px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    background: var(--body-bg);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.header__logo {
+    color: var(--primary-text);
+    display: flex;
+    flex-direction: row;
+}
+
+.header__logo h1 {
+    margin: auto;
+}
+
+.header__menu {
+    margin: auto;
+}
+
+.header__menu ul {
+    list-style: none;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    gap: 6rem;
+}
+
+.header__menu a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--primary-text);
+}
+
+button:hover {
+    transform: scale(1.05);
+    opacity: 80%;
+}
+
+.header__menu li:hover {
+    transform: scale(1.1);
+    opacity: 80%;
+}
+
+.switch {
+    position: absolute;
+    height: 2.4rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    background: var(--button);
+    box-shadow: var(--darkShadow)
+  }
+
+  .sun path {
+    fill: var(--primary-text);
+  }
+
+  .moon path {
+    fill: var(--primary-text);
+  }

@@ -4,15 +4,19 @@ import { auth } from '../../firebase';
 import axios from 'axios';
 import './profile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBuilding, faGlobe, faLocation, faIndustry, faUsers, faAlignLeft, faUserFriends, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBuilding, faGlobe, faLocation, faIndustry, faUsers, faAlignLeft, faUserFriends, faShareAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import Posts from '../Posts/posts';
 import Jobs from '../Jobs/jobs';
 import Ads from '../Ads/AdCards';
 import CompanyAnalytics from './CompanyAnalytics';
+import Loading from '../Common/Loading';
 
 const CP = () => {
     const [user, loading] = useAuthState(auth);
-    const [profile, setProfile] = useState(null);
+    const [profile, setProfile] = useState(null); // Initialize profile state as null
+    const [followersCount, setFollowersCount] = useState(0);
+    const [followingCount, setFollowingCount] = useState(0);
+
     const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
@@ -20,9 +24,12 @@ const CP = () => {
             if (user) {
                 try {
                     const response = await axios.get(`http://localhost:8080/api/company/profile/${user.uid}`);
-                    setProfile(response.data);
+                    setProfile(response.data); // Update profile state with fetched data
+                    fetchFollowersCount(response.data.id); // Fetch followers count based on profile id
+                    fetchFollowingCount(response.data.id); // Fetch following count based on profile id
                 } catch (error) {
                     console.error('Error fetching profile:', error);
+                    setProfile({}); // Set an empty object if there's an error to prevent repeated fetch attempts
                 }
             }
         };
@@ -37,8 +44,30 @@ const CP = () => {
         document.documentElement.setAttribute('data-theme', darkMode ? 'light' : 'dark');
     };
 
+    const handleEditProfile = () => {
+        window.location.href = '/company/completeprofile';
+    };
+
+    const fetchFollowersCount = async (profileId) => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/company/followers/${profileId}`);
+            setFollowersCount(response.data.count || 0);
+        } catch (error) {
+            console.error('Error fetching followers count:', error);
+        }
+    };
+
+    const fetchFollowingCount = async (profileId) => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/company/following/${profileId}`);
+            setFollowingCount(response.data.count || 0);
+        } catch (error) {
+            console.error('Error fetching following count:', error);
+        }
+    };
+
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loading />;
     }
 
     if (!user) {
@@ -55,39 +84,43 @@ const CP = () => {
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
             </button>
             <div className="profile-header">
-                <img src={profile.logo || "https://static.vecteezy.com/system/resources/previews/002/767/731/original/jh-logo-letter-initial-logo-designs-template-free-vector.jpg"} alt="logo" />
-                <h2>{profile.name}</h2>
-                <button className="follow-button">Follow</button>
+                <img src={profile.logo || 'https://static.vecteezy.com/system/resources/previews/002/767/731/original/jh-logo-letter-initial-logo-designs-template-free-vector.jpg'} alt="logo" />
+                <h2>{profile.name || 'Company Name'}</h2>
+                <button className="edit-button" onClick={handleEditProfile}><FontAwesomeIcon icon={faEdit} /> Edit Details</button>
                 <button className="share-button"><FontAwesomeIcon icon={faShareAlt} /> Share</button>
             </div>
+            <div className="followers-following">
+                    <button className="followers-button">
+                        <FontAwesomeIcon icon={faUserFriends} /> Followers ({followersCount})
+                    </button>
+                    <button className="following-button">
+                        <FontAwesomeIcon icon={faUserFriends} /> Following ({followingCount})
+                    </button>
+                </div>
             <div className="profile-details">
                 <div className="detail-item">
                     <FontAwesomeIcon icon={faBuilding} />
-                    <span>{profile.name}</span>
+                    <span>{profile.name || 'Company Name'}</span>
                 </div>
                 <div className="detail-item">
                     <FontAwesomeIcon icon={faGlobe} />
-                    <span>{profile.website}</span>
+                    <span>{profile.website || 'Website URL'}</span>
                 </div>
                 <div className="detail-item">
                     <FontAwesomeIcon icon={faLocation} />
-                    <span>{profile.location}</span>
+                    <span>{profile.location || 'Location'}</span>
                 </div>
                 <div className="detail-item">
                     <FontAwesomeIcon icon={faIndustry} />
-                    <span>{profile.industry}</span>
+                    <span>{profile.industry || 'Industry'}</span>
                 </div>
                 <div className="detail-item">
                     <FontAwesomeIcon icon={faUsers} />
-                    <span>{profile.size} employees</span>
-                </div>
-                <div className="detail-item">
-                    <FontAwesomeIcon icon={faUserFriends} />
-                    <span>{profile.followers} followers</span>
+                    <span>{profile.size ? `${profile.size} employees` : 'Company Size'}</span>
                 </div>
                 <div className="detail-item">
                     <FontAwesomeIcon icon={faAlignLeft} />
-                    <span>{profile.description}</span>
+                    <span>{profile.description || 'Company Description'}</span>
                 </div>
             </div>
             <div className="profile-sections">
@@ -105,7 +138,7 @@ const CP = () => {
                 </div>
                 <div className="profile-section">
                     <h3>Analytics</h3>
-                    <CompanyAnalytics views={profile.analytics.views} clicks={profile.analytics.clicks} />
+                    <CompanyAnalytics views={profile.analytics?.views || 0} clicks={profile.analytics?.clicks || 0} />
                 </div>
             </div>
         </div>

@@ -31,6 +31,10 @@ const RP = () => {
         document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
     };
 
+    const handleEditProfile = () => {
+        window.location.href = '/recruiter/completeprofile';
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -47,8 +51,16 @@ const RP = () => {
             <div className="profile-header">
                 <img src={profile.profilePicture || "https://via.placeholder.com/150"} alt="profile" />
                 <h2>{profile.fullName}</h2>
-                <button className="follow-button">Follow</button>
+                <button className="edit-button" onClick={handleEditProfile}>Edit Details</button>
                 <button className="share-button"><FontAwesomeIcon icon={faShareAlt} /> Share</button>
+            </div>
+            <div className="followers-following">
+                <button className="followers-button">
+                    <FontAwesomeIcon icon={faUserFriends} /> Followers
+                </button>
+                <button className="following-button">
+                    <FontAwesomeIcon icon={faUserFriends} /> Following
+                </button>
             </div>
             <div className="profile-details">
                 <div className="detail-item">

@@ -3,7 +3,7 @@ import './counter.css';
 
 const counterData = [
   {
-    number: '350',
+    number: '350+',
     text: 'Companies',
   },
   {
@@ -19,7 +19,7 @@ const counterData = [
 const Counter = () => {
   return (
     <section className="counter" id="projects">
-      <div className="container">
+      <div className="counter_container">
         <div className="counter__wrapper">
           {counterData.map((item, index) => (
             <div className="counter__item" key={index}>
