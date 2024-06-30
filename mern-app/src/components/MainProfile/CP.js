@@ -24,12 +24,12 @@ const CP = () => {
             if (user) {
                 try {
                     const response = await axios.get(`http://localhost:8080/api/company/profile/${user.uid}`);
-                    setProfile(response.data); // Update profile state with fetched data
-                    fetchFollowersCount(response.data.id); // Fetch followers count based on profile id
-                    fetchFollowingCount(response.data.id); // Fetch following count based on profile id
+                    setProfile(response.data); 
+                    fetchFollowersCount(response.data.id); 
+                    fetchFollowingCount(response.data.id); 
                 } catch (error) {
                     console.error('Error fetching profile:', error);
-                    setProfile({}); // Set an empty object if there's an error to prevent repeated fetch attempts
+                    setProfile({}); 
                 }
             }
         };
