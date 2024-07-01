@@ -35,6 +35,7 @@ const jobRoutes = require('./routes/jobRoutes');
 const postRoutes = require('./routes/postRoutes');
 const adRoutes = require('./routes/adRoutes');
 const projectRoutes = require('./routes/projectRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 app.use('/api/company', companyRoutes);
 app.use('/api/recruiter', recruiterRoutes);
@@ -43,6 +44,9 @@ app.use('/api/jobs', jobRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/ads', adRoutes);
 app.use('/api/projects', projectRoutes);
+app.use('/api/search', userRoutes);
+app.use('/api/follow', userRoutes);
+app.use('/api/company/profile/:uid', userRoutes);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
