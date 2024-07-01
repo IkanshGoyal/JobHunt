@@ -1,24 +1,4 @@
-:root {
-    --background-color: #1e1e1e;
-    --text-color: #e0e0e0;
-    --primary-color: #25CEDE;
-    --secondary-color: #03dac6;
-    --neu-shadow-light: rgba(255, 255, 255, 0.1);
-    --neu-shadow-dark: rgba(0, 0, 0, 0.5);
-}
-
-[data-theme="light"] {
-    --background-color: #f0f0f3;
-    --text-color: #333;
-    --primary-color: #25CEDE;
-    --secondary-color: #03dac6;
-    --neu-shadow-light: #fff;
-    --neu-shadow-dark: rgba(174, 174, 192, 0.4);
-}
-
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
     font-family: Arial, sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -26,12 +6,13 @@ body {
 .posts-container {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 50px;
+    justify-content: space-around;
     overflow-x: auto;
     height: fit-content;
-    padding: 10px;
+    padding: 20px;
     scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) var(--background-color);
+    scrollbar-color: var(--primary-text) var(--bg);
 }
 
 .posts-container::-webkit-scrollbar {
@@ -39,23 +20,22 @@ body {
 }
 
 .posts-container::-webkit-scrollbar-track {
-    background: var(--background-color);
+    background: var(--bg);
 }
 
 .posts-container::-webkit-scrollbar-thumb {
-    background-color: var(--primary-color);
+    background-color: var(--primary-text);
     border-radius: 10px;
-    border: 3px solid var(--background-color);
+    border: 3px solid var(--bg);
 }
 
 .post-container {
-    background: var(--background-color);
+    background: var(--bg);
     width: 500px;
     height: fit-content;
     max-height: 500px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 5px 5px 15px var(--neu-shadow-dark), -5px -5px 15px var(--neu-shadow-light);
     transition: all 0.3s ease;
 }
 
@@ -64,59 +44,111 @@ body {
 }
 
 .profile {
+    width: 300px;
+    height: 50px;
     display: flex;
-    align-items: center;
+    flex-direction: row;
     margin-bottom: 10px;
+    margin-left: 20px;
 }
 
-.logo {
+.pic {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-    object-fit: cover;
+    margin-right: 20px;
+}
+
+.author {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-around;
+    height: 50px;
 }
 
 .name {
     font-size: 1em;
     margin: 0;
+    margin-top: 20px;
+    max-height: 2px;
 }
 
 .date {
     font-size: 0.8em;
-    color: gray;
-    margin-left: auto;
+    color: var(--secondary-text);
+    margin-right: auto;
+    padding-bottom: 20px;
 }
 
 .title {
     font-size: 1.2em;
     font-weight: 600;
+    text-align: left;
     margin: 10px 0;
-    padding: 10px 0px;
+    margin-bottom: 5px;
+    padding: 10px 20px;
 }
 
 .link {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    background: var(--background-color);
+    color: var(--button);
+    margin-left: 10px;
     padding: 10px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 15px var(--neu-shadow-dark), -5px -5px 15px var(--neu-shadow-light);
+    text-align: left;
+}
+
+.link svg {
+    margin-right: 10px;
 }
 
 .description {
-    margin: 10px 0;
     text-align: left;
+    margin: 0;
+    padding: 10px 20px;
+    color: var(--secondary-text);
+    margin-bottom: 20px;
 }
 
 .like, .comment {
     font-size: 0.9em;
-    color: gray;
+    color: var(--secondary-text);
     margin-right: 10px;
     margin-bottom: 10px;
 }
 
 .like:hover, .comment:hover {
-    color: var(--primary-color);
+    color: var(--primary-text);
     cursor: pointer;
+}
+
+.dark-theme {
+    --bg: #2C2F33;
+    --button: #25CEDE;
+    --primary-text: #EEEEEE;
+    --secondary-text: #687890;
+    --lightShadow: #3B4451 -5px -5px 15px;
+    --darkShadow: #000000 5px 5px 15px;
+
+    .post-container {
+        box-shadow: 7px 7px 14px #000000, -7px -7px 14px #3B4451;
+    }
+
+    .nav-item.active {
+        box-shadow: inset 3px 3px 6px #000000, inset -3px -3px 6px #3B4451;
+    }
+}
+
+.light-theme {
+    --bg: #FFFFFF;
+    --button: #EEEEEE;
+    --primary-text: #687890;
+    --secondary-text: #687890;
+    --lightShadow: #FFFFFF -5px -5px 15px;
+    --darkShadow: #88A0B7 5px 5px 15px;
+
+    .post-container {
+        box-shadow: 7px 7px 14px #88A0B7, -7px -7px 14px #FFFFFF;
+    }
+    .nav-item.active {
+        box-shadow: inset 3px 3px 6px #88A0B7, inset -3px -3px 6px #FFFFFF;
+    }
 }

@@ -13,7 +13,7 @@ import Loading from '../Common/Loading';
 
 const CP = () => {
     const [user, loading] = useAuthState(auth);
-    const [profile, setProfile] = useState(null); // Initialize profile state as null
+    const [profile, setProfile] = useState(null); 
     const [followersCount, setFollowersCount] = useState(0);
     const [followingCount, setFollowingCount] = useState(0);
 

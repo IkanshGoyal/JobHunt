@@ -9,7 +9,7 @@ const CompanyLogin = () => {
     const { email, password } = event.target.elements;
     try {
       await signInWithEmailAndPassword(auth, email.value, password.value);
-      window.location.href = '/company/home';
+      window.location.href = '/company/dashboard';
     } catch (error) {
       alert('Error logging in', error);
     }

@@ -20,6 +20,7 @@ import CH from "./components/Home/CompanyHome";
 import RH from "./components/Home/RecruiterHome";
 import AH from "./components/Home/ApplicantHome";
 import CP from "./components/MainProfile/CP";
+import CD from "./components/Dashboard/CD";
 import RP from "./components/MainProfile/RP";
 import AP from "./components/MainProfile/AP";
 import JobSearch from "./components/Jobs/jobSearch";
@@ -77,7 +78,7 @@ const App = () => {
             <Route path="/company/login" element={<CompanyLogin />} />
             <Route path="/company/register" element={<CompanyRegister />} />
             <Route path="/company/completeprofile" element={<CompanyProfile />} />
-            <Route path="/company/profile" element={<CP />} />
+            <Route path="/company/dashboard" element={<CD toggleTheme={toggleTheme} theme={theme} />} />
             <Route path="/company/home" element={<CH />} />
             <Route path="/applicant/profile" element={<AP />} />
             <Route path="/applicant/home" element={<AH />} />
@@ -103,6 +104,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.bg};
     transition: background-color 0.3s ease;
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
   }
 `;
 

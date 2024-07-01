@@ -39,8 +39,15 @@
     flex-direction: row;
 }
 
+.header__logo img {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+}
+
 .header__logo h1 {
     margin: auto;
+    padding-left: 60px;
 }
 
 .header__menu {

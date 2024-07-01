@@ -5,7 +5,7 @@ import './header.css';
 
 const nav_links = [
 	{ path: "/", display: "Home" },
-	{ path: "/about", display: "About" },
+	{ path: "/about", display: "About Us" },
 	{ path: "/contact", display: "Contact Us" },
 ];
 
