@@ -59,6 +59,11 @@ body {
     margin-bottom: 40px;
 }
 
+.posts-container-main  > .job-card {
+    margin-bottom: 40px;
+    width: 700px;
+}
+
 .posts-container-main .date {
     margin-top: 20px;
 }

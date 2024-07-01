@@ -3,7 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import axios from 'axios';
 import './Dashboard.css';
-import DashboardMain from './CDMain';
+import ApplicantMain from './ADMain';
 import ApplicantAnalytics from '../MainProfile/ApplicantAnalytics';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTachometerAlt, faFileAlt, faChartLine, faSearch, faCog, faBriefcase } from '@fortawesome/free-solid-svg-icons';
@@ -58,7 +58,7 @@ const ApplicantDashboard = () => {
     const renderComponent = () => {
         switch (activeComponent) {
             case 'Dashboard':
-                return <DashboardMain />;
+                return <ApplicantMain />;
             case 'Posts':
                 return <ShowPosts />;
             case 'Analytics':

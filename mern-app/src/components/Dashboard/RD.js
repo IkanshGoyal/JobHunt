@@ -3,7 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import axios from 'axios';
 import './Dashboard.css';
-import DashboardMain from './CDMain';
+import RecruiterMain from './RDMain';
 import RecruiterAnalytics from '../MainProfile/RecruiterAnalytics';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTachometerAlt, faFileAlt, faChartLine, faSearch, faCog } from '@fortawesome/free-solid-svg-icons';
@@ -57,7 +57,7 @@ const RecruiterDashboard = () => {
     const renderComponent = () => {
         switch (activeComponent) {
             case 'Dashboard':
-                return <DashboardMain />;
+                return <RecruiterMain />;
             case 'Posts':
                 return <ShowPosts />;
             case 'Analytics':
