@@ -87,6 +87,32 @@
     opacity: 90%;
 }
 
+.profile-section {
+    height: 600px;
+}
+
+.posts-sec {
+    margin-bottom: 800px;
+}
+
+.settings-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    padding: 20px;
+}
+
+.settings-container h2 {
+    text-align: center;
+}
+
+.settings-option {
+    width: 300px;
+}
+
 .dark-theme {
     --bg: #2C2F33;
     --button: #25CEDE;

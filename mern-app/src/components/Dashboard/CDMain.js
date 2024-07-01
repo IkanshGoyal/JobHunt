@@ -53,6 +53,14 @@ const CDMain = () => {
         }
     };
 
+    const handleNewPost = () => {
+        window.location.href = '/add-newPost';
+    };
+
+    const handleNewJob = () => {
+        window.location.href = '/add-newJob';
+    };
+
     if (loading) {
         return <Loading />;
     }
@@ -119,12 +127,12 @@ const CDMain = () => {
                 </div>
             </div>
             <div className="profile-sections">
-                <div className="profile-section">
+                <div className="profile-section posts-sec">
                     <div className='top-title'>
                         <h2>Posts</h2>
-                        <div className='add-post'>
-                            <FontAwesomeIcon icon={faPlus} />
-                            <span>Add Post</span>
+                        <div className='add-post' onClick={handleNewPost} >
+                                <FontAwesomeIcon icon={faPlus} />
+                                <span>Add Post</span>
                         </div>
                     </div>
                     <Posts />
@@ -132,7 +140,7 @@ const CDMain = () => {
                 <div className="profile-section">
                     <div className='top-title'>
                         <h2>Jobs</h2>
-                        <div className='add-post'>
+                        <div className='add-post' onClick={handleNewJob}>
                             <FontAwesomeIcon icon={faPlus} />
                             <span>Add Job</span>
                         </div>

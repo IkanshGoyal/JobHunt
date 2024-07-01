@@ -3,7 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBuilding, faLocation, faUserTie, faGraduationCap, faBriefcase, faUser, faLink, faTasks } from '@fortawesome/free-solid-svg-icons';
+import { faBuilding, faLocation, faUserTie, faGraduationCap, faBriefcase, faUser, faLink, faTasks, faImage } from '@fortawesome/free-solid-svg-icons';
 
 const RecruiterProfile = () => {
     const [user, loading] = useAuthState(auth);
@@ -18,7 +18,7 @@ const RecruiterProfile = () => {
             userId,
             fullName: fullName.value,
             email,
-            profilePicture: profilePicture.files[0], 
+            profilePicture: profilePicture.value,
             company: company.value,
             about: about.value,
             location: location.value,
@@ -53,7 +53,10 @@ const RecruiterProfile = () => {
                     <input name="fullName" placeholder="Full Name" required />
                 </div>
                 <div className="field">
-                    <input type="file" name="profilePicture" placeholder="Profile Picture" />
+                    <span className="icon">
+                        <FontAwesomeIcon icon={faImage} />
+                    </span>
+                    <input type="url" name="profilePicture" placeholder="Profile Picture URL" required />
                 </div>
                 <div className="field">
                     <span className="icon">

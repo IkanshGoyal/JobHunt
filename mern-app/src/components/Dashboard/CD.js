@@ -3,21 +3,26 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import axios from 'axios';
 import './Dashboard.css';
-import Posts from '../Posts/posts';
 import DashboardMain from './CDMain';
 import CompanyAnalytics from '../MainProfile/CompanyAnalytics';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTachometerAlt, faFileAlt, faChartLine, faSearch, faCog } from '@fortawesome/free-solid-svg-icons';
 import Loading from '../Common/Loading';
+import Settings from './Settings';
+import ShowPosts from './ShowPosts';
+import Search from './Search';
 
-const Dashboard = ({ toggleTheme, theme }) => {
+const Dashboard = () => {
     const [activeComponent, setActiveComponent] = useState('Dashboard');
     const [user, loading] = useAuthState(auth);
     const [profile, setProfile] = useState(null);
+    const darkMode = localStorage.getItem('theme') === 'dark';
 
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+    useEffect(() => {
+        document.body.className = darkMode ? 'dark-theme' : 'light-theme';
+        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    }, [darkMode]);
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -54,9 +59,13 @@ const Dashboard = ({ toggleTheme, theme }) => {
             case 'Dashboard':
                 return <DashboardMain />
             case 'Posts':
-                return <Posts />;
+                return <ShowPosts />;
             case 'Analytics':
                 return <CompanyAnalytics views={0} clicks={0} />;
+            case 'Search':
+                return <Search userProfile={profile} />;
+            case 'Settings':
+                return <Settings />;
             default:
                 return <div>Welcome to the Dashboard</div>;
         }

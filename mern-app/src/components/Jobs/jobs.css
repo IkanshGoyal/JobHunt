@@ -7,26 +7,30 @@ body {
     display: flex;
     flex-direction: row;
     gap: 50px;
-    justify-content: space-around;
-    overflow-x: auto;
-    height: fit-content;
     padding: 20px;
+    margin: auto;
+    padding-bottom: 20px;
+    position: absolute;
+    width: calc(100% - 350px);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-color: var(--secondary-text) var(--secondary-text);
     scrollbar-width: thin;
-    scrollbar-color: var(--primary-text) var(--bg);
 }
 
 .jobs-container::-webkit-scrollbar {
-    width: 8px;
-}
-
-.jobs-container::-webkit-scrollbar-track {
-    background: var(--bg);
+    height: 10px;
+    border-radius: 10px;
 }
 
 .jobs-container::-webkit-scrollbar-thumb {
-    background-color: var(--primary-text);
+    background-color: var(--secondary-text);
     border-radius: 10px;
-    border: 3px solid var(--bg);
+}
+
+.jobs-container::-webkit-scrollbar-track {
+    background-color: var(--button);
+    border-radius: 10px;
 }
 
 .job-card {
@@ -38,6 +42,7 @@ body {
     border-radius: 10px;
     transition: all 0.3s ease;
     text-align: left;
+    margin-bottom: 30px;
 }
 
 .job-card:hover {
@@ -106,7 +111,7 @@ body {
 .quality li {
     width: 100px;
     height: 30px;
-    color: var(--button);
+    color: var(--secondary-text);
     text-align: center;
     padding-top: 4px;
     font-size: 18px;
@@ -121,8 +126,8 @@ body {
 .quality1 {
     width: 150px;
     height: 50px;
-    padding-top: 13px;
-    color: var(--button);
+    padding-top: 15px;
+    color: var(--secondary-text);
     text-align: center;
     font-size: 18px;
     font-weight: 600;
@@ -187,7 +192,9 @@ body {
     --lightShadow: #3B4451 -5px -5px 15px;
     --darkShadow: #000000 5px 5px 15px;
 
-    .job-card, .quality li, .quality1 {
+    .job-card,
+    .quality li,
+    .quality1 {
         box-shadow: 7px 7px 14px #000000, -7px -7px 14px #3B4451;
     }
 
@@ -204,7 +211,9 @@ body {
     --lightShadow: #FFFFFF -5px -5px 15px;
     --darkShadow: #88A0B7 5px 5px 15px;
 
-    .job-card, .quality li, .quality1 {
+    .job-card,
+    .quality li,
+    .quality1 {
         box-shadow: 7px 7px 14px #88A0B7, -7px -7px 14px #FFFFFF;
     }
 

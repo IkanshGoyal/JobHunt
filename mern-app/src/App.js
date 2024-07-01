@@ -16,16 +16,16 @@ import ApplicantRegister from "./components/Register/ApplicantRegister";
 import CompanyProfile from "./components/Profile/CompanyProfile";
 import RecruitProfile from "./components/Profile/RecruiterProfile";
 import ApplicantProfile from "./components/Profile/ApplicantProfile";
-import CH from "./components/Home/CompanyHome";
-import RH from "./components/Home/RecruiterHome";
-import AH from "./components/Home/ApplicantHome";
-import CP from "./components/MainProfile/CP";
 import CD from "./components/Dashboard/CD";
+import RD from "./components/Dashboard/RD";
+import AD from "./components/Dashboard/AD";
 import RP from "./components/MainProfile/RP";
 import AP from "./components/MainProfile/AP";
 import JobSearch from "./components/Jobs/jobSearch";
 import ResetPassword from "./components/Common/ResetPassword";
 import Contact from "./components/UI/Contact";
+import NewJob from "./components/Jobs/NewJob";
+import NewPost from "./components/Posts/NewPost";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const App = () => {
@@ -78,12 +78,11 @@ const App = () => {
             <Route path="/company/login" element={<CompanyLogin />} />
             <Route path="/company/register" element={<CompanyRegister />} />
             <Route path="/company/completeprofile" element={<CompanyProfile />} />
-            <Route path="/company/dashboard" element={<CD toggleTheme={toggleTheme} theme={theme} />} />
-            <Route path="/company/home" element={<CH />} />
+            <Route path="/company/dashboard" element={<CD />} />
+            <Route path="/recruiter/dashboard" element={<RD />} />
+            <Route path="/applicant/dashboard" element={<AD />} />
             <Route path="/applicant/profile" element={<AP />} />
-            <Route path="/applicant/home" element={<AH />} />
             <Route path="/recruiter/profile" element={<RP />} />
-            <Route path="/recruiter/home" element={<RH />} />
             <Route path="/recruiter/login" element={<RecruiterLogin />} />
             <Route path="/recruiter/register" element={<RecruiterRegister />} />
             <Route path="/recruiter/completeprofile" element={<RecruitProfile />} />
@@ -93,6 +92,8 @@ const App = () => {
             <Route path="/applicant/jobs" element={<JobSearch />} />
             <Route path="/reset" element={<ResetPassword />} />
             <Route path="/UserCards" element={<UserCards />} />
+            <Route path="/add-newJob" element={<NewJob />}/>
+            <Route path="/add-newPost" element={<NewPost />}/>
           </Routes>
         </div>
       </Router>

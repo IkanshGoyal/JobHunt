@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import JobCard from './job';
-import './jobs.css';
+import JobCard from '../Jobs/job';
+import '../Posts/post.css';
 
-const Jobs = ({width}) => {
+const ShowJobs = () => {
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -27,7 +27,7 @@ const Jobs = ({width}) => {
     }
 
     return (
-        <div className='jobs-container' width={width}>
+        <div className='posts-container-main'>
             {jobs.map((job) => (
                 <JobCard key={job._id} job={job} />
             ))}
@@ -35,4 +35,4 @@ const Jobs = ({width}) => {
     );
 };
 
-export default Jobs;
+export default ShowJobs;

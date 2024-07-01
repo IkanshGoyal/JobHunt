@@ -3,7 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLocation, faGraduationCap, faBriefcase, faTools, faLink, faBullseye } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLocation, faGraduationCap, faBriefcase, faTools, faLink, faBullseye, faFileAlt, faImage } from '@fortawesome/free-solid-svg-icons';
 
 const ApplicantProfile = () => {
     const [user, loading] = useAuthState(auth);
@@ -18,10 +18,10 @@ const ApplicantProfile = () => {
             userId,
             fullName: fullName.value,
             email,
-            profilePicture: profilePicture.files[0], 
+            profilePicture: profilePicture.value, 
             about: about.value,
             location: location.value,
-            resume: resume.files[0], 
+            resume: resume.value, 
             education: education.value,
             experience: experience.value,
             skills: skills.value.split(','),
@@ -53,7 +53,10 @@ const ApplicantProfile = () => {
                     <input name="fullName" placeholder="Full Name" required />
                 </div>
                 <div className="field">
-                    <input type="file" name="profilePicture" placeholder="Profile Picture" />
+                    <span className="icon">
+                        <FontAwesomeIcon icon={faImage} />
+                    </span>
+                    <input type="url" name="profilePicture" placeholder="Profile Picture URL" required />
                 </div>
                 <div className="field">
                     <span className="icon">
@@ -68,7 +71,10 @@ const ApplicantProfile = () => {
                     <input name="location" placeholder="Location" required />
                 </div>
                 <div className="field">
-                    <input type="file" name="resume" placeholder="Resume" />
+                    <span className="icon">
+                        <FontAwesomeIcon icon={faFileAlt} />
+                    </span>
+                    <input type="url" name="resume" placeholder="Resume URL" required />
                 </div>
                 <div className="field">
                     <span className="icon">
