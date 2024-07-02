@@ -26,7 +26,7 @@ const NewJob = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/api/jobs', formData);
+            const response = await axios.post('https://jobhunt-six.vercel.app/api/jobs', formData);
             alert('Job added:' + response.data);
             window.location.href = way;
         } catch (error) {
