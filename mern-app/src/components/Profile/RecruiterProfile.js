@@ -30,7 +30,7 @@ const RecruiterProfile = () => {
         };
 
         try {
-            await axios.post('http://localhost:8080/api/recruiter', newRecruiter);
+            await axios.post('https://jobhunt-six.vercel.app/api/recruiter', newRecruiter);
             alert("Profile Created!");
             window.location.href = '/recruiter/dashboard';
         } catch (error) {
