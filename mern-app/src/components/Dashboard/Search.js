@@ -25,7 +25,7 @@ const Search = ({ userProfile }) => {
 
     const handleFollow = async (profileId) => {
         try {
-            await axios.post(`http://localhost:8080/api/follow`, { followerId: userProfile._id, followingId: profileId });
+            await axios.post(`https://jobhunt-six.vercel.app/api/follow`, { followerId: userProfile._id, followingId: profileId });
             alert('Followed successfully!');
             setResults(results.map(result => {
                 if (result._id === profileId) {
