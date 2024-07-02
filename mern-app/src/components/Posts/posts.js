@@ -15,7 +15,7 @@ const Posts = ({ profile }) => {
     useEffect(() => {
         const fetchProfileAndPosts = async () => {
             try {
-                const postsResponse = await axios.get('http://localhost:8080/api/posts');
+                const postsResponse = await axios.get('https://jobhunt-six.vercel.app/api/posts');
                 const filteredPosts = postsResponse.data.filter(post => post.author.profilePicture === profile.logo);
                 setPosts(filteredPosts);
                 setLoading(false);
@@ -40,7 +40,7 @@ const Posts = ({ profile }) => {
 
     const handleDelete = async (postId) => {
         try {
-            await axios.delete(`http://localhost:8080/api/posts/${postId}`);
+            await axios.delete(`https://jobhunt-six.vercel.app/api/posts/${postId}`);
             toast.success('Post deleted');
             setPosts(posts.filter(post => post._id !== postId));
         } catch (error) {
