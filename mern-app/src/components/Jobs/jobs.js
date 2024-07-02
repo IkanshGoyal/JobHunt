@@ -10,7 +10,7 @@ const Jobs = ({profile}) => {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/jobs');
+                const response = await axios.get('https://jobhunt-six.vercel.app/api/jobs');
                 const filteredJobs = response.data.filter(job => (job.company === profile.name || job.company === profile.company));
                 setJobs(filteredJobs);
                 setLoading(false);
