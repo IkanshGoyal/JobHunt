@@ -24,7 +24,7 @@ const Settings = ({ role }) => {
     const handleDeleteProfile = async () => {
         if (confirmation) {
             try {
-                await axios.delete(`http://localhost:8080/api/${role}/${user.uid}`);
+                await axios.delete(`https://jobhunt-six.vercel.app/api/${role}/${user.uid}`);
                 handleLogout();
             } catch (error) {
                 console.error('Error deleting profile:', error);
