@@ -11,7 +11,7 @@ const app = express();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb+srv://ikanshgoyal:iEJskDLZShRGrm4v@jobhunt.5pbstlz.mongodb.net/?retryWrites=true&w=majority&appName=JobHunt", {
+    await mongoose.connect(process.env.DB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
