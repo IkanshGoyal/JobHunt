@@ -1,9 +1,9 @@
 const Recruiter = require('../models/Recruiter');
 
 exports.createRecruiter = async (req, res) => {
-  const { fullName, profilePicture, company, about, location, position, educationDetails, yearsOfExperience, specializations, linkedInProfile } = req.body;
+  const { userId, name, email, logo, company, about, location, position, educationDetails, yearsOfExperience, specializations, linkedInProfile } = req.body;
   try {
-    const recruiter = new Recruiter({ fullName, profilePicture, company, about, location, position, educationDetails, yearsOfExperience, specializations, linkedInProfile });
+    const recruiter = new Recruiter({ userId, name, email, logo, company, about, location, position, educationDetails, yearsOfExperience, specializations, linkedInProfile });
     await recruiter.save();
     res.status(201).json(recruiter);
   } catch (error) {

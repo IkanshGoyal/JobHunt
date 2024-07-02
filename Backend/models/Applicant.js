@@ -2,26 +2,16 @@ const mongoose = require('mongoose');
 
 const applicantSchema = new mongoose.Schema({
     userId: { type: String, required: true },
-    fullName: { type: String, required: true },
+    name: { type: String, required: true },
     email: { type: String, required: true },
-    profilePicture: { type: String, required: true },
+    logo: { type: String, required: true },
     about: { type: String },
     location: { type: String },
     resume: { type: String, required: true },
-    education: [{
-      institution: { type: String },
-      degree: { type: String },
-      fieldOfStudy: { type: String },
-      startDate: { type: Date },
-      endDate: { type: Date },
-    }],
-    experience: [{
-      company: { type: String },
-      position: { type: String },
-      startDate: { type: Date },
-      endDate: { type: Date },
-      description: { type: String },
-    }],
+    education: {
+      type: String, required: true
+    },
+    experience: { type: String, required: true },
     skills: [String],
     linkedInProfile: { type: String },
     desiredJobTitle: { type: String, required: true },
