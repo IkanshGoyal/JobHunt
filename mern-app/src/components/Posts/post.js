@@ -19,7 +19,7 @@ const Post = ({ logo, name, date, title, content, link, likes, comments, showDel
 
     const handleLike = async () => {
         try {
-            await axios.put(`http://localhost:8080/api/posts/like/${postId}`);
+            await axios.put(`https://jobhunt-six.vercel.app/api/posts/like/${postId}`);
             setLocalLikes(localLikes + 1);
             toast.success('Post liked');
         } catch (error) {
