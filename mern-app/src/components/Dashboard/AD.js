@@ -29,7 +29,7 @@ const ApplicantDashboard = () => {
         const fetchProfile = async () => {
             if (user) {
                 try {
-                    const response = await axios.get(`http://localhost:8080/api/applicant/profile/${user.uid}`);
+                    const response = await axios.get(`https://jobhunt-six.vercel.app/api/applicant/profile/${user.uid}`);
                     setProfile(response.data);
                 } catch (error) {
                     console.error('Error fetching profile:', error);
