@@ -54,7 +54,7 @@ const CDMain = () => {
     };
 
     const handleNewPost = () => {
-        window.location.href = '/add-newPost';
+        window.location.href = '/add-newPost/company';
     };
 
     const handleNewJob = () => {
@@ -135,7 +135,7 @@ const CDMain = () => {
                                 <span>Add Post</span>
                         </div>
                     </div>
-                    <Posts />
+                    <Posts profile={profile} />
                 </div>
                 <div className="profile-section">
                     <div className='top-title'>
@@ -145,7 +145,7 @@ const CDMain = () => {
                             <span>Add Job</span>
                         </div>
                     </div>
-                    <Jobs />
+                    <Jobs profile={profile} />
                 </div>
             </div>
         </div>

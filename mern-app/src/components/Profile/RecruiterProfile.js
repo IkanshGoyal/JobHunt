@@ -16,9 +16,9 @@ const RecruiterProfile = () => {
 
         const newRecruiter = {
             userId,
-            fullName: fullName.value,
+            name: fullName.value,
             email,
-            profilePicture: profilePicture.value,
+            logo: profilePicture.value,
             company: company.value,
             about: about.value,
             location: location.value,
@@ -32,7 +32,7 @@ const RecruiterProfile = () => {
         try {
             await axios.post('http://localhost:8080/api/recruiter', newRecruiter);
             alert("Profile Created!");
-            window.location.href = '/recruiter/home';
+            window.location.href = '/recruiter/dashboard';
         } catch (error) {
             alert("Error submitting the form: " + error.message);
         }
@@ -56,7 +56,7 @@ const RecruiterProfile = () => {
                     <span className="icon">
                         <FontAwesomeIcon icon={faImage} />
                     </span>
-                    <input type="url" name="profilePicture" placeholder="Profile Picture URL" required />
+                    <input type="text" name="profilePicture" placeholder="Profile Picture URL" required />
                 </div>
                 <div className="field">
                     <span className="icon">

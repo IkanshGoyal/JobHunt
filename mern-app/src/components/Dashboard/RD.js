@@ -65,7 +65,7 @@ const RecruiterDashboard = () => {
             case 'Search':
                 return <Search userProfile={profile} />;
             case 'Settings':
-                return <Settings />;
+                return <Settings role='recruiter' />;
             default:
                 return <div>Welcome to the Dashboard</div>;
         }

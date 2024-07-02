@@ -4,7 +4,7 @@ import { auth } from '../../firebase';
 import axios from 'axios';
 import '../MainProfile/profile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserFriends, faGlobe, faLocation, faBriefcase, faAlignLeft, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { faPlus,faUserFriends, faGlobe, faLocation, faBriefcase, faAlignLeft, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import Posts from '../Posts/posts';
 import Loading from '../Common/Loading';
 
@@ -41,6 +41,11 @@ const ApplicantMain = () => {
         } catch (error) {
             console.error('Error fetching followers count:', error);
         }
+    };
+
+    
+    const handleNewPost = () => {
+        window.location.href = '/add-newPost/recruiter';
     };
 
     const fetchFollowingCount = async (profileId) => {
@@ -102,13 +107,6 @@ const ApplicantMain = () => {
                     </div>
                     <span className='second-span'>Desired Job</span>
                 </div>
-                <div className="detail-item about-field">
-                    <div>
-                        <FontAwesomeIcon icon={faAlignLeft} size='2x' />
-                        <span className='first-span'>{profile.about}</span>
-                    </div>
-                    <span className='second-span'>About</span>
-                </div>
                 <div className="detail-item">
                     <div>
                         <FontAwesomeIcon icon={faGraduationCap} size='2x' />
@@ -118,13 +116,24 @@ const ApplicantMain = () => {
                     </div>
                     <span className='second-span'>Education</span>
                 </div>
+                <div className="detail-item about-field">
+                    <div>
+                        <FontAwesomeIcon icon={faAlignLeft} size='2x' />
+                        <span className='first-span'>{profile.about}</span>
+                    </div>
+                    <span className='second-span'>About</span>
+                </div>
             </div>
             <div className="profile-sections">
                 <div className="profile-section posts-sec">
                     <div className='top-title'>
                         <h2>Posts</h2>
+                        <div className='add-post' onClick={handleNewPost} >
+                            <FontAwesomeIcon icon={faPlus} />
+                            <span>Add Post</span>
+                        </div>
                     </div>
-                    <Posts />
+                    <Posts profile={profile} />
                 </div>
             </div>
         </div>

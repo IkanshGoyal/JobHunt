@@ -6,20 +6,16 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 import Loading from '../Common/Loading';
 
-const Posts = () => {
+const Posts = ({profile}) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [profile, setProfile] = useState(null);
     const [user] = useAuthState(auth);
 
     useEffect(() => {
         const fetchProfileAndPosts = async () => {
             try {
-                const profileResponse = await axios.get(`http://localhost:8080/api/company/profile/${user.uid}`);
-                setProfile(profileResponse.data);
-
                 const postsResponse = await axios.get('http://localhost:8080/api/posts');
-                const filteredPosts = postsResponse.data.filter(post => post.author.id === profileResponse.data.id);
+                const filteredPosts = postsResponse.data.filter(post => post.author.profilePicture === profile.logo);
                 setPosts(filteredPosts);
 
                 setLoading(false);

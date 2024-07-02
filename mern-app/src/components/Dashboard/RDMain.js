@@ -54,7 +54,7 @@ const RecruiterMain = () => {
     };
 
     const handleNewPost = () => {
-        window.location.href = '/add-newPost';
+        window.location.href = '/add-newPost/recruiter';
     };
 
     const handleNewJob = () => {
@@ -114,7 +114,7 @@ const RecruiterMain = () => {
                 <div className="detail-item">
                     <div>
                         <FontAwesomeIcon icon={faGraduationCap} size='2x' />
-                        <span className='first-span'>{profile.educationDetails?.college}</span>
+                        <span className='first-span'>{profile.educationDetails}</span>
                     </div>
                     <span className='second-span'>Education</span>
                 </div>
@@ -135,7 +135,7 @@ const RecruiterMain = () => {
                             <span>Add Post</span>
                         </div>
                     </div>
-                    <Posts />
+                    <Posts profile={profile} />
                 </div>
                 <div className="profile-section">
                     <div className='top-title'>
@@ -145,7 +145,7 @@ const RecruiterMain = () => {
                             <span>Add Job</span>
                         </div>
                     </div>
-                    <Jobs />
+                    <Jobs profile={profile} />
                 </div>
             </div>
         </div>

@@ -104,6 +104,7 @@ body {
     align-items: flex-start;
     justify-content: space-around;
     height: 50px;
+    color: var(--primary-text);
 }
 
 .name {
@@ -127,6 +128,7 @@ body {
     margin: 10px 0;
     margin-bottom: 5px;
     padding: 10px 20px;
+    color: var(--primary-text);
 }
 
 .link {

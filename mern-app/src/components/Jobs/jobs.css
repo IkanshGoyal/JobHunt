@@ -97,6 +97,7 @@ body {
 
 .job-qualifications h3 {
     margin: 20px 0;
+    color: var(--primary-text);
 }
 
 .quality {

@@ -68,7 +68,7 @@ const ApplicantDashboard = () => {
             case 'Jobs':
                 return <ShowJobs />;
             case 'Settings':
-                return <Settings />;
+                return <Settings role='applicant' />;
             default:
                 return <div>Welcome to the Dashboard</div>;
         }

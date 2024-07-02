@@ -65,7 +65,7 @@ const Dashboard = () => {
             case 'Search':
                 return <Search userProfile={profile} />;
             case 'Settings':
-                return <Settings />;
+                return <Settings role='company' />;
             default:
                 return <div>Welcome to the Dashboard</div>;
         }

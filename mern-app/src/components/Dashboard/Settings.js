@@ -4,7 +4,7 @@ import { auth } from '../../firebase';
 import axios from 'axios';
 import './Dashboard.css';
 
-const Settings = () => {
+const Settings = ({ role }) => {
     const [user] = useAuthState(auth);
     const [confirmation, setConfirmation] = useState(false);
     const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
@@ -24,7 +24,7 @@ const Settings = () => {
     const handleDeleteProfile = async () => {
         if (confirmation) {
             try {
-                await axios.delete(`http://localhost:8080/api/company/${user.uid}`);
+                await axios.delete(`http://localhost:8080/api/${role}/${user.uid}`);
                 handleLogout();
             } catch (error) {
                 console.error('Error deleting profile:', error);
@@ -33,7 +33,7 @@ const Settings = () => {
     };
 
     const handleEditProfile = () => {
-        window.location.href = '/company/completeprofile';
+        window.location.href = `/${role}/completeprofile`;
     };
 
     return (

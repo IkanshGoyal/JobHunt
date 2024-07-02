@@ -30,7 +30,7 @@ const CompanyProfile = () => {
             console.log(newCompany);
             await axios.post('http://localhost:8080/api/company', newCompany);
             alert("Profile Created!");
-            window.location.href = '/company/home';
+            window.location.href = '/company/dashboard';
         } catch (error) {
             alert("Error submitting the form: " + error.message);
         }

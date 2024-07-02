@@ -16,9 +16,9 @@ const ApplicantProfile = () => {
 
         const newApplicant = {
             userId,
-            fullName: fullName.value,
+            name: fullName.value,
             email,
-            profilePicture: profilePicture.value, 
+            logo: profilePicture.value, 
             about: about.value,
             location: location.value,
             resume: resume.value, 
@@ -32,7 +32,7 @@ const ApplicantProfile = () => {
         try {
             await axios.post('http://localhost:8080/api/applicant', newApplicant);
             alert("Profile Created!");
-            window.location.href = '/applicant/home';
+            window.location.href = '/applicant/dashboard';
         } catch (error) {
             alert("Error submitting the form: " + error.message);
         }

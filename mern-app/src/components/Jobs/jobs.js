@@ -3,7 +3,7 @@ import axios from 'axios';
 import JobCard from './job';
 import './jobs.css';
 
-const Jobs = ({width}) => {
+const Jobs = ({profile}) => {
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -11,7 +11,8 @@ const Jobs = ({width}) => {
         const fetchJobs = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/api/jobs');
-                setJobs(response.data);
+                const filteredJobs = response.data.filter(post => response.author.profilePicture === profile.logo);
+                setJobs(filteredJobs);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching jobs:', error);
@@ -27,7 +28,7 @@ const Jobs = ({width}) => {
     }
 
     return (
-        <div className='jobs-container' width={width}>
+        <div className='jobs-container' >
             {jobs.map((job) => (
                 <JobCard key={job._id} job={job} />
             ))}

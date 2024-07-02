@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../Jobs/newjob.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +10,7 @@ import Loading from '../Common/Loading';
 
 const AddPostForm = () => {
     const [user, loading] = useAuthState(auth);
+    const { role } = useParams();
     const [profile, setProfile] = useState(null);
     const [formData, setFormData] = useState({
         author: { profilePicture: '', name: '' },
@@ -21,7 +23,7 @@ const AddPostForm = () => {
         const fetchProfile = async () => {
             if (user) {
                 try {
-                    const response = await axios.get(`http://localhost:8080/api/company/profile/${user.uid}`);
+                    const response = await axios.get(`http://localhost:8080/api/${role}/profile/${user.uid}`);
                     const profileData = response.data;
                     setProfile(profileData);
                     setFormData({
@@ -37,7 +39,7 @@ const AddPostForm = () => {
         if (!loading) {
             fetchProfile();
         }
-    }, [user, loading]);
+    }, [user, loading, role]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
