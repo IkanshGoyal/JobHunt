@@ -15,7 +15,7 @@ const Search = ({ userProfile }) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.get(`http://localhost:8080/api/search?query=${searchQuery}`);
+            const response = await axios.get(`https://jobhunt-six.vercel.app/api/search?query=${searchQuery}`);
             setResults(response.data);
         } catch (error) {
             console.error('Error fetching search results:', error);
