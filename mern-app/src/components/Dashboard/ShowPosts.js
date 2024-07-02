@@ -38,6 +38,7 @@ const ShowPosts = () => {
                     link={post.link}
                     likes={post.likes}
                     comments={post.comments}
+                    postId={post._id}
                 />
             ))}
         </div>

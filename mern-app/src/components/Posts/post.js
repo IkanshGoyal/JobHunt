@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink, faHeart, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './post.css';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-const Post = ({ logo, name, date, title, content, link, likes, comments }) => {
+const Post = ({ logo, name, date, title, content, link, likes, comments, showDelete, postId, onDelete }) => {
     const formattedDate = new Date(date).toLocaleDateString('en-GB', {
         day: '2-digit',
         month: 'short',
         year: 'numeric'
     });
+    const [localLikes, setLocalLikes] = useState(likes);
+
+    const handleDelete = async () => {
+        onDelete(postId);
+    };
+
+    const handleLike = async () => {
+        try {
+            await axios.put(`http://localhost:8080/api/posts/like/${postId}`);
+            setLocalLikes(localLikes + 1);
+            toast.success('Post liked');
+        } catch (error) {
+            console.error('Error liking post:', error);
+            toast.error('Failed to like post');
+        }
+    };
 
     return (
         <div className='post-container'>
@@ -25,12 +43,14 @@ const Post = ({ logo, name, date, title, content, link, likes, comments }) => {
             </div>
             <div className='description'>{content}</div>
             <div className='actions'>
-                <span className='like'>
-                    <FontAwesomeIcon icon={faHeart} size='xl' /> {likes.length}
+                <span className='like' onClick={handleLike}>
+                    <FontAwesomeIcon icon={faHeart} size='xl' /> {localLikes}
                 </span>
-                <span className='comment'>
-                    <FontAwesomeIcon icon={faComment} size='xl' /> {comments.length}
-                </span>
+                {(showDelete === 'true') && (
+                    <span className='comment' onClick={handleDelete}>
+                        <FontAwesomeIcon icon={faTrash} size='xl' />
+                    </span>
+                )}
             </div>
         </div>
     );
