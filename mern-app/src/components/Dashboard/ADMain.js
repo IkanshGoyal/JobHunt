@@ -18,7 +18,7 @@ const ApplicantMain = () => {
         const fetchProfile = async () => {
             if (user) {
                 try {
-                    const response = await axios.get(`http://localhost:8080/api/applicant/profile/${user.uid}`);
+                    const response = await axios.get(`https://jobhunt-six.vercel.app/api/applicant/profile/${user.uid}`);
                     setProfile(response.data);
                     fetchFollowersCount(response.data.id);
                     fetchFollowingCount(response.data.id);
@@ -36,7 +36,7 @@ const ApplicantMain = () => {
 
     const fetchFollowersCount = async (profileId) => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/applicant/followers/${profileId}`);
+            const response = await axios.get(`https://jobhunt-six.vercel.app/api/applicant/followers/${profileId}`);
             setFollowersCount(response.data.count || 0);
         } catch (error) {
             console.error('Error fetching followers count:', error);
@@ -50,7 +50,7 @@ const ApplicantMain = () => {
 
     const fetchFollowingCount = async (profileId) => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/applicant/following/${profileId}`);
+            const response = await axios.get(`https://jobhunt-six.vercel.app/api/applicant/following/${profileId}`);
             setFollowingCount(response.data.count || 0);
         } catch (error) {
             console.error('Error fetching following count:', error);
