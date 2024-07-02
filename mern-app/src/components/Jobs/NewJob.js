@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './newjob.css';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBuilding, faMapMarkerAlt, faIndustry, faAlignLeft, faDollarSign, faLink } from '@fortawesome/free-solid-svg-icons';
 
 const NewJob = () => {
+    const { role } = useParams();
+    const way = `/${role}/dashboard`;
     const [formData, setFormData] = useState({
         title: '',
         company: '',
@@ -25,6 +28,7 @@ const NewJob = () => {
         try {
             const response = await axios.post('http://localhost:8080/api/jobs', formData);
             alert('Job added:' + response.data);
+            window.location.href = way;
         } catch (error) {
             alert('Error adding job:' + error);
         }
@@ -139,7 +143,7 @@ const NewJob = () => {
                 <button type="submit">Add Job</button>
             </form>
             <div className="info">
-                <a href="/">Back to Dashboard</a>
+                <a href={way}>Back to Dashboard</a>
             </div>
         </div>
     );

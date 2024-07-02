@@ -45,7 +45,7 @@ const ApplicantMain = () => {
 
     
     const handleNewPost = () => {
-        window.location.href = '/add-newPost/recruiter';
+        window.location.href = '/add-newPost/applicant';
     };
 
     const fetchFollowingCount = async (profileId) => {

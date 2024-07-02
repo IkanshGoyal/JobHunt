@@ -45,11 +45,14 @@ const AddPostForm = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const way = `/${role}/dashboard`;
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:8080/api/posts', formData);
             alert('Post added: ' + response.data);
+            window.location.href = way;
         } catch (error) {
             alert('Error adding post: ' + error);
         }
@@ -112,7 +115,7 @@ const AddPostForm = () => {
                 <button type="submit">Add Post</button>
             </form>
             <div className="info">
-                <a href="/">Back to Dashboard</a>
+                <a href={way} >Back to Dashboard</a>
             </div>
         </div>
     );

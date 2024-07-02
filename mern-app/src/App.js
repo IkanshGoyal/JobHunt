@@ -92,7 +92,7 @@ const App = () => {
             <Route path="/applicant/jobs" element={<JobSearch />} />
             <Route path="/reset" element={<ResetPassword />} />
             <Route path="/UserCards" element={<UserCards />} />
-            <Route path="/add-newJob" element={<NewJob />}/>
+            <Route path="/add-newJob/:role" element={<NewJob />}/>
             <Route path="/add-newPost/:role" element={<NewPost />}/>
           </Routes>
         </div>

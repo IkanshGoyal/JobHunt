@@ -58,7 +58,7 @@ const RecruiterMain = () => {
     };
 
     const handleNewJob = () => {
-        window.location.href = '/add-newJob';
+        window.location.href = '/add-newJob/recruiter';
     };
 
     if (loading) {

@@ -58,7 +58,7 @@ const CDMain = () => {
     };
 
     const handleNewJob = () => {
-        window.location.href = '/add-newJob';
+        window.location.href = '/add-newJob/company';
     };
 
     if (loading) {
