@@ -12,7 +12,7 @@ const JobSearch = () => {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/jobs');
+                const response = await axios.get('https://jobhunt-six.vercel.app/api/jobs');
                 setJobs(response.data);
             } catch (error) {
                 console.error('Error fetching jobs:', error);
