@@ -28,7 +28,7 @@ const CompanyProfile = () => {
 
         try {
             console.log(newCompany);
-            await axios.post('http://localhost:8080/api/company', newCompany);
+            await axios.post('https://jobhunt-six.vercel.app/api/company', newCompany);
             alert("Profile Created!");
             window.location.href = '/company/dashboard';
         } catch (error) {
