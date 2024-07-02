@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const corsOptions = {
-  Credential: 'true',
+  origin: "https://job-hunt-zeta-gold.vercel.app", 
+  methods: ["POST", "GET", "PUT", "DELETE"],
+  credentials: true
 };
 
 const app = express();
