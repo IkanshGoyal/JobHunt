@@ -23,7 +23,7 @@ const AddPostForm = () => {
         const fetchProfile = async () => {
             if (user) {
                 try {
-                    const response = await axios.get(`http://localhost:8080/api/${role}/profile/${user.uid}`);
+                    const response = await axios.get(`https://jobhunt-six.vercel.app/api/${role}/profile/${user.uid}`);
                     const profileData = response.data;
                     setProfile(profileData);
                     setFormData({
@@ -50,7 +50,7 @@ const AddPostForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/api/posts', formData);
+            const response = await axios.post('https://jobhunt-six.vercel.app/api/posts', formData);
             alert('Post added: ' + response.data);
             window.location.href = way;
         } catch (error) {
